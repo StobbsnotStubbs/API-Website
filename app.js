@@ -6,7 +6,7 @@ const ingredientsList = document.querySelector(".ingredients");
 const instructions = document.querySelector(".instructions");
 const clearBtn = document.querySelector(".clear");
 
-let randomCocktail = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
+let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 generateBtn.addEventListener("click", generateCocktail);
 
