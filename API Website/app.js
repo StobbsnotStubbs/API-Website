@@ -20,3 +20,5 @@ function generateCocktail(e) {
   const name = cocktail.drinks[0].strDrink;
   document.querySelector(".recipe").innerHTML = `<h1>${name}</h1>`;
 }
+
+//making a change to try and push
