@@ -4,14 +4,13 @@ const generateBtn = document.querySelector(".generate");
 const header = document.querySelector(".cocktailTitle");
 const ingredientsList = document.querySelector(".ingredients");
 const instructions = document.querySelector(".instructions");
-const clearBtn = document.querySelector(".clear");
 
-let randomCocktail = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
+let randomCocktail = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
 
 generateBtn.addEventListener("click", generateCocktail);
 
-function generateCocktail(e) {
-  fetch(randomCocktail)
+async function generateCocktail(e) {
+  await fetch(randomCocktail)
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -20,7 +19,7 @@ function generateCocktail(e) {
       }
     })
     .then((data) => (cocktail = data.drinks[0]))
-    .then(() => console.log(cocktail))
+    // .then(() => console.log(cocktail))
 
     .catch((error) => console.error("FETCH ERROR:", error));
 
@@ -44,4 +43,22 @@ function generateCocktail(e) {
     listItem.innerHTML = value;
     ingredientsList.appendChild(listItem);
   }
+  // measures
+  // const getMeasures = Object.keys(cocktail)
+  //   .filter(function (ingredient) {
+  //     return ingredient.indexOf("strMeasure") == 0;
+  //   })
+  //   .reduce(function (ingredientsAll, ingredient) {
+  //     if (cocktail[ingredient] != null) {
+  //       ingredientsAll[ingredient] = cocktail[ingredient];
+  //     }
+  //     return ingredientsAll;
+  //   }, {});
+
+  // for (let key in getMeasures) {
+  //   let value = getMeasures[key];
+  //   listItem = document.createElement("li");
+  //   listItem.innerHTML = value;
+  //   ingredientsList.appendChild(listItem);
+  // }git
 }
