@@ -4,6 +4,7 @@ const generateBtn = document.querySelector(".generate");
 const header = document.querySelector(".cocktailTitle");
 const ingredientsList = document.querySelector(".ingredients");
 const instructions = document.querySelector(".instructions");
+const clearBtn = document.querySelector(".clear");
 
 let randomCocktail = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -43,4 +44,12 @@ function generateCocktail(e) {
     listItem.innerHTML = value;
     ingredientsList.appendChild(listItem);
   }
+}
+
+clearBtn.addEventListener("click", clearCocktail);
+
+function clearCocktail() {
+  instructions.replaceChildren("");
+  ingredientsList.replaceChildren("");
+  header.replaceChildren("");
 }
