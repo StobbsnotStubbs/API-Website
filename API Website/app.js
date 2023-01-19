@@ -1,4 +1,9 @@
+//elements on the DOM
+
 const generateBtn = document.querySelector(".generate");
+const header = document.querySelector(".cocktailTitle");
+const ingredientsList = document.querySelector(".ingredients");
+const instructions = document.querySelector(".instructions");
 
 let randomCocktail = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -18,29 +23,24 @@ function generateCocktail(e) {
 
     .catch((error) => console.error("FETCH ERROR:", error));
 
-  //elements on the DOM
-  header = document.querySelector(".recipe");
-  ingredientsList = document.querySelector(".ingredients");
-  instructions = document.querySelector(".instructions");
-
   const cocktailName = cocktail.strDrink;
-  header.innerHTML = `<h1>${cocktailName}</h1>`;
+  header.textContent = cocktailName;
 
-  // const getIngredients = Object.keys(cocktail)
-  //   .filter(function (ingredient) {
-  //     return ingredient.indexOf("strIngredient") == 0;
-  //   })
-  //   .reduce(function (ingredients, ingredient) {
-  //     if (cocktail[ingredient] != null) {
-  //       ingredients[ingredient] = cocktail[ingredient];
-  //     }
-  //     return ingredients;
-  //   }, {});
+  const getIngredients = Object.keys(cocktail)
+    .filter(function (ingredient) {
+      return ingredient.indexOf("strIngredient") == 0;
+    })
+    .reduce(function (ingredientsAll, ingredient) {
+      if (cocktail[ingredient] != null) {
+        ingredientsAll[ingredient] = cocktail[ingredient];
+      }
+      return ingredientsAll;
+    }, {});
 
-  // for (let key in getIngredients) {
-  //   let value = getIngredients[key];
-  //   listItem = document.createElement("li");
-  //   listItem.innerHTML = value;
-  //   ingredientsList.appendChild(listItem);
-  // }
+  for (let key in getIngredients) {
+    let value = getIngredients[key];
+    listItem = document.createElement("li");
+    listItem.innerHTML = value;
+    ingredientsList.appendChild(listItem);
+  }
 }
