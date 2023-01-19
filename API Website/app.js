@@ -4,6 +4,7 @@ const generateBtn = document.querySelector(".generate");
 const header = document.querySelector(".cocktailTitle");
 const ingredientsList = document.querySelector(".ingredients");
 const instructions = document.querySelector(".instructions");
+const clearBtn = document.querySelector(".clear");
 
 let randomCocktail = "http://www.thecocktaildb.com/api/json/v1/1/random.php";
 
@@ -25,7 +26,7 @@ function generateCocktail(e) {
 
   const cocktailName = cocktail.strDrink;
   header.textContent = cocktailName;
-
+  ingredientsList.replaceChildren("");
   const getIngredients = Object.keys(cocktail)
     .filter(function (ingredient) {
       return ingredient.indexOf("strIngredient") == 0;
