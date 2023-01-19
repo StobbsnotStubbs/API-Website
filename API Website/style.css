@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 10% auto;
+}
+.generate {
+  border: 1px solid black;
+  font-size: 5rem;
+}
